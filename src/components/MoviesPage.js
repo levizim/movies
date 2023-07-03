@@ -24,7 +24,15 @@ const MoviesPage = () => {
     }
     return (
         <div className="container">
-            <input type="text" value={search} onChange={handleSearch} placeholder="Search movies..." />
+        <div className="mb-3">
+            <input
+                type="text"
+                value={search}
+                onChange={handleSearch}
+                placeholder="Search Movies..."
+                className="form-control"
+            />
+        </div>
             <h2>Popular Movies</h2>
             <div className="row">
                 {movies.map((movie) => (

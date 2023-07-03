@@ -26,7 +26,15 @@ const TVPage = () => {
 
     return (
         <div className="container">
-            <input type="text" value={search} onChange={handleSearch} placeholder="Search TV shows..." />
+        <div className="mb-3">
+            <input
+                type="text"
+                value={search}
+                onChange={handleSearch}
+                placeholder="Search TV Shows..."
+                className="form-control"
+            />
+        </div>
             <h2>Popular TV Shows</h2>
             <div className="row">
                 {shows.map((show) => (
