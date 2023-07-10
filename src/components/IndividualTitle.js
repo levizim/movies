@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const IndividualTitle = () => {
+    // Declare state variables for title details and reviews
     const [title, setTitle] = useState({});
     const [reviews, setReviews] = useState([]);
+
+    // Get the id and mediaType from the URL parameters using the useParams hook
     const { id, mediaType } = useParams();
 
     useEffect(() => {
+        // Fetch title details
         const fetchTitleDetails = async () => {
             const response = await fetch(
                 `https://api.themoviedb.org/3/${mediaType}/${id}?api_key=76222a968c469d597af4f8040683e1ae&language=en-US`
@@ -15,6 +19,7 @@ const IndividualTitle = () => {
             setTitle(data);
         };
 
+        // Fetch reviews
         const fetchReviews = async () => {
             const response = await fetch(
                 `https://api.themoviedb.org/3/${mediaType}/${id}/reviews?api_key=76222a968c469d597af4f8040683e1ae&language=en-US&page=1`
@@ -23,6 +28,7 @@ const IndividualTitle = () => {
             setReviews(data.results);
         };
 
+        // Call the fetchTitleDetails and fetchReviews functions
         fetchTitleDetails();
         fetchReviews();
     }, [id, mediaType]);
